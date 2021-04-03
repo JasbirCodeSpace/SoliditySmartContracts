@@ -59,7 +59,7 @@ contract Project{
         price += msg.value;
     }
     
-    function createRequest(string memory _description, uint _amount) public onlyEmployer onlyPendingProject{
+    function createRequest(string memory _description, uint _amount) public onlyFreelancer onlyPendingProject{
         require(_amount <= remainingPayment, "High request price!");
         Request memory request = Request({
             description: _description,
@@ -82,7 +82,7 @@ contract Project{
     }
     
     
-    function payRequest(uint _index) public onlyEmployer{
+    function payRequest(uint _index) public onlyFreelancer{
         
         require(!locked, "Reenterant detected!");
         Request storage request = requests[_index];
